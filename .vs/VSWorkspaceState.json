@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github",
+    "\\.github\\workflows",
+    "\\pages",
+    "\\tests"
+  ],
+  "SelectedNode": "\\tests\\loginpageapp.spec.js",
+  "PreviewInSolutionExplorer": false
+}
