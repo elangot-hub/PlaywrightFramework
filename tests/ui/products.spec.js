@@ -43,3 +43,12 @@ test('user click on the product filter dropdown ', async({productPage})=>{
 
     
 })
+
+test('user can sort products by price', async ({ productPage }) => {
+  await productPage.selectProductFilter('Price (low to high)');
+});
+
+test('user add a product to the cart', async({productPage})=>{
+  await productPage.addProductToCart();
+  await expect(productPage.cartBadge).toHaveText('1');
+})

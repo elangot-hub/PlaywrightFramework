@@ -5,8 +5,9 @@ class ProductPage {
     this.page = page;
     this.inventoryItems = page.locator('[data-test="inventory-item"]');
     this.hamburgerMenuButton = page.locator('#react-burger-menu-btn');
-    this.closehamburgerbutton =page.locator('#react-burger-cross-btn');
-    this.productfilter = page.locator('select.product_sort_container');
+    this.closeHamburgerMenuButton = page.locator('#react-burger-cross-btn');
+    this.productFilter = page.locator('select.product_sort_container');
+    this.cartBadge = page.locator('.shopping_cart_badge');
   }
 
   async getProducts() {
@@ -30,16 +31,19 @@ class ProductPage {
     await clickElement(this.hamburgerMenuButton);
   }
   async closeHamburgerMenu(){
-    await clickElement(this.closehamburgerbutton);
+    await clickElement(this.closeHamburgerMenuButton);
   }
   async selectProductFilter(option) {
-    await clickElement(this.productfilter);
+    await clickElement(this.productFilter);
 
     if (option) {
-      await this.productfilter.selectOption({ label: option });
+      await this.productFilter.selectOption({ label: option });
     }
   }
 
+  async addProductToCart(index = 0) {
+    await this.inventoryItems.nth(index).locator('button').click();
+  }
 
 }
 
