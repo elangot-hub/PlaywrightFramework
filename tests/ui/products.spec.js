@@ -49,9 +49,6 @@ test('user can sort products by price', async ({ productPage }) => {
 });
 
 test('user add a product to the cart', async({productPage})=>{
-  const firstProduct = productPage.inventoryItems.first();
-  const addToCartButton = firstProduct.locator('button');
-  await addToCartButton.click();
-  const cartBadge = productPage.page.locator('.shopping_cart_badge');
-  await expect(cartBadge).toHaveText('1');
+  await productPage.addProductToCart();
+  await expect(productPage.cartBadge).toHaveText('1');
 })
