@@ -1,25 +1,12 @@
-class homepage{
+class HomePage {
+  constructor(page) {
+    this.page = page;
+    this.productsTitle = page.locator('.title');
+  }
 
-    constructor(page) {
-
-        this.page = page;
-    }
-
-
-  
-
-    get bbb() {
-        return this.page.locator("//div[@class='inventory_list']//div[1]//div[3]//button[1]")
-    }
-
-
-
-    async cdrty() {
-      
-
-        await this.bbb.click();
-
-
-    }
+  async isLoaded() {
+    await this.productsTitle.waitFor();
+  }
 }
-module.exports = homepage;
+
+module.exports = HomePage;

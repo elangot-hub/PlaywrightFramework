@@ -1,70 +1,27 @@
-class loginpage {
+const { clickElement } = require('../helpers/common.helper');
 
-    constructor(page) {
+class LoginPage {
+  constructor(page) {
+    this.page = page;
+    this.usernameInput = page.locator('[data-test="username"]');
+    this.passwordInput = page.locator('[data-test="password"]');
+    this.loginButton = page.locator('[data-test="login-button"]');
+    this.errorMessage = page.locator('[data-test="error"]');
+  }
 
-        this.page = page;
-    }
+  async goto() {
+    await this.page.goto('https://www.saucedemo.com/v1/');
+  }
 
-       // this.usernamefield = page.locator("#user-name")
+  async login(username, password) {
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await clickElement(this.loginButton);
+  }
 
-       // this.passwordfield = page.locator("#password")
-
-       // this.loginbutton=page.locator("#login-button")
-
-
-
-   get usernameinput(){
-    return this.page.locator("#user-name")
-   }     
-
-
-     get passwordinput(){
-    return this.page.locator("#password")
-}     
-
-      get loginbutton(){
-          return this.page.locator(".btn_action")
-    }     
-
-  
-
-
-   
-  //  async enterusername(username) {
-      //  await this.usernamefield.fill(username);
-   // }
-
-   // async enterpassword(password) {
-       // await this.passwordfield.fill(password);
-   // }
-
-  //  async login() {
-
-       // await this.loginbutton.click();
-   // }
-
-    async loginapplication(username, password) {
-
-
-        await this.usernameinput.fill(username);
-
-        await this.passwordinput.fill(password);
-
-        await this.loginbutton.click();
-
-       
+  async loginapplication(username, password) {
+    await this.login(username, password);
+  }
 }
-     
 
-
-
-
-
-
-
-
-
-
-
-}
-module.exports = loginpage;
+module.exports = LoginPage;
