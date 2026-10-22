@@ -1,6 +1,6 @@
 const { test, expect } = require('../../fixtures/test.fixture');
 const tdata = require('../../test-data/users.json');
-test('User with valid  log in', async ({ page, loginPage }) => {
+test('User with valid login', async ({ page, loginPage }) => {
   await loginPage.goto();
   await loginPage.login(tdata.valid_user.username, tdata.valid_user.password);
   await expect(page).toHaveURL(/inventory/);
