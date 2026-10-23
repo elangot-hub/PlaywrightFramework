@@ -38,7 +38,6 @@ test('user click on the product filter dropdown ', async({productPage})=>{
     await productPage.selectProductFilter();
     await productPage.page.waitForTimeout(2000);
     await productPage.selectProductFilter('Price (low to high)');
-    await productPage.page.waitForTimeout(2000);
     await productPage.selectProductFilter('Name (Z to A)');
 
     
